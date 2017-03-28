@@ -19,16 +19,24 @@ class App {
 			let body = '',
 				headers = {};
 			if(url.match('action')){
-				body = JSON.stringify(apiServer(url));
-				headers = {
-					'Content-Type': 'application/json'
-				}
+				apiServer(url).then(val=>{
+					body = JSON.stringify(val);
+					headers = {
+						'Content-Type': 'application/json'
+					}
+					let finalHeader = Object.assign(headers, {'X-powered-by': 'Node.js'})
+					response.writeHead(200, 'resolve OK', finalHeader)
+					response.end(body);
+				})
 			}else{
-				body = staticServer(url);
+				// 居然用同步处理
+				body = staticServer(url).then(body=>{
+					let finalHeader = Object.assign(headers, {'X-powered-by': 'Node.js'})
+					response.writeHead(200, 'resolve OK', finalHeader)
+					response.end(body);
+				});
 			}
-			let finalHeader = Object.assign(headers, {'X-powered-by': 'Node.js'})
-			response.writeHead(200, 'resolve OK', finalHeader)
-			response.end(body);
+			
 		}	
 	}
 }
