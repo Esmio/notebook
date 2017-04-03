@@ -12,9 +12,13 @@ setTimeout(function() {
 			console.log(error)
 		}
 	})
+	// post
 	$.ajax({
 		url : '/list.action',
-		method: 'get',
+		method: 'post',
+		data: {
+			"name":"jrg"
+		},
 		success: function(arr){
 			var liStr = arr.map(function(ele){
 				return '<li>'+ele+'</li>'
