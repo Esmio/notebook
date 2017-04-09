@@ -7,7 +7,8 @@ const fs = require('fs');
  // expres框架 apo.use(static('public'))
 let getPath = url => path.resolve(process.cwd(), 'public', `.${url}`);
 
-let staticFunc = (url)=>{
+let staticFunc = (request)=>{
+	let {url} = request;
 	return new Promise((resolve, reject)=>{
 		if(url==='/'){
 			url = '/index.html'

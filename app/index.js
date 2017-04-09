@@ -6,6 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const staticServer = require('./static-server');
 const apiServer = require('./api');
+const urlParser = require('./url-parser')
 class App {
 	constructor(){
 
@@ -13,16 +14,19 @@ class App {
 	initServer(){
 		//初始化的工作
 		return (request,response)=>{
-			let { url,method } = request;
 			//每个请求逻辑 根据url 进行代码分发
 			// 返回字符串或者buffer
-			if(method.toLowerCase()==='post'){
-				debugger;
+			request.context = {
+				query: {},
+				body: '',
+				method: 'get'
 			}
-			apiServer(url,method).then(val=> {
+			urlParser(request).then(()=>{
+				return apiServer(request)
+			}).then(val=> {
 				if(!val){
 					// Promiese
-					return staticServer(url)
+					return staticServer(request)
 				}else{
 					return val
 				}

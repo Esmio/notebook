@@ -16,9 +16,7 @@ setTimeout(function() {
 	$.ajax({
 		url : '/list.action',
 		method: 'post',
-		data: {
-			"name":"jrg"
-		},
+		data:JSON.stringify(['name','jrg']),
 		success: function(arr){
 			var liStr = arr.map(function(ele){
 				return '<li>'+ele+'</li>'

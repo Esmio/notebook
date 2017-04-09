@@ -2,7 +2,8 @@
 * api server
 */
 
-module.exports=(url,method)=>{
+module.exports=(request)=>{
+	let { url,method,context } = request;
 	let apiMap = {
 		'/list.action': ['jita', 'apple', 'mongodbbook'],
 		'/user.action': ['simon', 'male', 'chinese']
@@ -12,7 +13,8 @@ module.exports=(url,method)=>{
 		return Promise.resolve(apiMap[url])
 	}else{
 		//post
-		return Promise.resolve(apiMap[url])
+		let {body} = context
+		return Promise.resolve(body);
 	}
 }
 	
