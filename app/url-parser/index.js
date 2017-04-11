@@ -4,20 +4,18 @@
  */
  // request: query + body + method
 
-module.exports = (request)=>{
-	let {method, url, context} = request;
+module.exports = (ctx)=>{
+	let {method, url} = ctx.req;
+	let {reqCtx, req} = ctx;
 	method = method.toLowerCase();
 	return Promise.resolve({
 		then: (resolve, reject)=>{
-			context.method = method;
-			//@TODO
-			context.query = {};
 			if(method==='post'){
 				let data = '';
-				request.on('data', (chunk)=>{
+				req.on('data', (chunk)=>{
 					data += chunk;
 				}).on('end',()=>{
-					context.body = JSON.parse(data)
+					reqCtx.body = JSON.parse(data)
 					resolve()
 				})
 			}else {
