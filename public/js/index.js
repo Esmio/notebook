@@ -1,3 +1,5 @@
+require('../css/index.scss');
+
 setTimeout(function() {
 	$.ajax({
 		url : '/user.action',

@@ -1,20 +1,32 @@
-webpackJsonp([0],{
+webpackJsonp([0],[
+/* 0 */,
+/* 1 */,
+/* 2 */
+/***/ (function(module, exports) {
 
-/***/ 2:
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {setTimeout(function () {
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+__webpack_require__(2);
+
+setTimeout(function () {
 	$.ajax({
 		url: '/user.action',
 		method: 'get',
-		success: function (arr) {
+		success: function success(arr) {
 			var liStr = arr.map(function (ele) {
 				return '<li>' + ele + '</li>';
 			}).join('');
 			$('#root').html(liStr);
 		},
-		error: function (error) {
-			console.log(error);
+		error: function error(_error) {
+			console.log(_error);
 		}
 	});
 	// post
@@ -22,20 +34,19 @@ webpackJsonp([0],{
 		url: '/list.action',
 		method: 'post',
 		data: JSON.stringify(['name', 'jrg']),
-		success: function (arr) {
+		success: function success(arr) {
 			var liStr = arr.map(function (ele) {
 				return '<li>' + ele + '</li>';
 			}).join('');
 			$('#shop').html(liStr);
 		},
-		error: function (error) {
-			console.log(error);
+		error: function error(_error2) {
+			console.log(_error2);
 		}
 	});
 }, 1000);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ })
-
-},[2]);
+],[3]);
 //# sourceMappingURL=index.js.map

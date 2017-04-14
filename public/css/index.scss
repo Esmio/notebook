@@ -1,0 +1,62 @@
+@import './highlight/dark.scss';
+body {
+	background: linear-gradient(45deg, gray, coral );
+	font-size: 16px;
+}
+.clear-fix{
+	&:after{
+		content: '';
+		clear: both;
+		display: block;
+	}
+}
+
+.header{
+	padding: 20px 30px;
+	border-bottom: 1px solid #fff;
+	.avatar{
+		float: left;
+		width: 100px;
+		height: 100px;
+	}
+	.nav{
+		li{
+			display: inline-block;
+			padding: 20px;
+			a{	
+				float: left;
+				transition: ease .5s;
+				&:hover{
+					color: yellow;
+				}
+			}
+		}
+	}
+}
+.content {
+	min-height: 200px;
+}
+.footer{
+	padding: 20px 30px;
+	border-bottom: 1px solid #fff;
+	background:linear-gradient( 45deg, black, gray );
+	.img{
+		float: left;
+		width: 100px;
+		height: 100px;
+	}
+	.links{
+		li{
+			display: inline-block;
+			padding: 20px;
+			a{	
+				float: left;
+				transition: ease .5s;
+				&:hover{
+					color: yellow;
+				}
+			}
+		}
+	}
+}
+

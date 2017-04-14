@@ -37,11 +37,14 @@ class App {
 			let context = {
 				req: request,
 				reqCtx: {
+					statusCode: 200,
 					body: '',//post 请求的数据
 					query: {}// 处理客户端get请求
 				},
 				res: response,
 				resCtx: {
+					statusMessage: 'resolve ok',
+					statusCode: 200,// 状态码
 					headers: {},// response的返回报文
 					body: '',// 返回给前端的内容区  
 				}
@@ -50,9 +53,9 @@ class App {
 			// @TODO
 			this.composeMiddleware(context)
 				.then(()=>{
+					let { body, headers, statusCode, statusMessage } = context.resCtx;
 					let base = {'X-powered-by':'Node.js'};
-					let { body, headers } = context.resCtx;
-					response.writeHead(200, 'resolve OK', Object.assign(base, headers))
+					response.writeHead(statusCode, statusMessage, Object.assign(base, headers))
 					response.end(body);
 				})
 		}	
