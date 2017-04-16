@@ -37,12 +37,12 @@ class App {
 			let context = {
 				req: request,
 				reqCtx: {
-					statusCode: 200,
 					body: '',//post 请求的数据
 					query: {}// 处理客户端get请求
 				},
 				res: response,
 				resCtx: {
+					hasUser: false,
 					statusMessage: 'resolve ok',
 					statusCode: 200,// 状态码
 					headers: {},// response的返回报文
@@ -55,6 +55,11 @@ class App {
 				.then(()=>{
 					let { body, headers, statusCode, statusMessage } = context.resCtx;
 					let base = {'X-powered-by':'Node.js'};
+					// 设置白名单
+					const whiteNameList = ['/name_simon'];
+					let cookieStr = 'authd=name_simon;Max-Age=1000';
+					response.setHeader('Set-Cookie', cookieStr)
+					// ...
 					response.writeHead(statusCode, statusMessage, Object.assign(base, headers))
 					response.end(body);
 				})
