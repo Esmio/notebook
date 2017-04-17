@@ -41,7 +41,8 @@ body {
     padding: 20px; }
     .footer .links li a {
       float: left;
-      transition: ease .5s; }
+      transition: ease .5s;
+      color: #fff; }
       .footer .links li a:hover {
         color: yellow; }
 

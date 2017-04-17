@@ -4,11 +4,10 @@
 const cookie_parser = require('cookie');
 const whiteNameList = ['/name_simon']
 module.exports = (ctx)=>{
-	console.log('here')
 	let {url} = ctx.req;
 	let {cookie} = ctx.req.headers;
 	let {res, resCtx} = ctx;
-	let cookieObj = cookie_parser.parse(cookie);
+	let cookieObj = cookie_parser.parse(cookie.toString());
 	return Promise.resolve({
 		then: (resolve, reject)=>{
 			if(cookieObj['authd']){
