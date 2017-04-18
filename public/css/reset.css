@@ -17,7 +17,6 @@ h1, h2, h3, h4, h5, h6{
 body, button, input, select, textarea {
     font: 14px/1.5 "helvetica", "arial","Pingfang",'PingFang SC', "Hiragino Sans GB", "Microsoft Yahei", "STHeiti", "sans-serif";
 }
-
 /*
 h1, h2, h3, h4, h5, h6 {
     font-size: 100%;
@@ -118,7 +117,7 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 a:focus, input:focus {

@@ -45,7 +45,9 @@ class App {
 					hasUser: false,
 					statusMessage: 'resolve ok',
 					statusCode: 200,// 状态码
-					headers: {},// response的返回报文
+					headers: {
+						cookie: ''
+					},// response的返回报文
 					body: '',// 返回给前端的内容区  
 				}
 			};
@@ -55,11 +57,6 @@ class App {
 				.then(()=>{
 					let { body, headers, statusCode, statusMessage } = context.resCtx;
 					let base = {'X-powered-by':'Node.js'};
-					// 设置白名单
-					const whiteNameList = ['/name_simon'];
-					let cookieStr = 'authd=name_simon;Max-Age=1000';
-					response.setHeader('Set-Cookie', cookieStr)
-					// ...
 					response.writeHead(statusCode, statusMessage, Object.assign(base, headers))
 					response.end(body);
 				})
