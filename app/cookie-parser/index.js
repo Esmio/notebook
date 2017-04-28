@@ -4,7 +4,7 @@
 const cookie_parser = require('cookie');
 const whiteNameList = ['/name_simon']
 module.exports = (ctx)=>{
-	let {url} = ctx.req;
+	let {pathname} = ctx.reqCtx;
 	let {cookie} = ctx.req.headers;
 	let {res, resCtx} = ctx;
 	let cookieObj = {}
@@ -16,11 +16,11 @@ module.exports = (ctx)=>{
 				resCtx.hasUser = true;
 				res.setHeader('Set-Cookie', cookieStr(3600))
 			}
-			if(whiteNameList.indexOf(url)>-1){
+			if(whiteNameList.indexOf(pathname)>-1){
 				console.log('hello')
 				res.setHeader('Set-Cookie', cookieStr(3600))
 			}
-			if(url === '/logout'){
+			if(pathname === '/logout'){
 				res.setHeader('Set-Cookie', cookieStr(0))
 			}
 			// 实现逻辑
