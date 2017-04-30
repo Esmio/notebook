@@ -2,7 +2,7 @@
 node_modules
 
 # production
-public/dist
+# public/dist
 
 #misc
 .DS_Store
