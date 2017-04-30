@@ -2,7 +2,7 @@
  * 处理cookie
  */
 const cookie_parser = require('cookie');
-const whiteNameList = ['/name_simon']
+const whiteNameList = ['/simon']
 module.exports = (ctx)=>{
 	let {pathname} = ctx.reqCtx;
 	let {cookie} = ctx.req.headers;
