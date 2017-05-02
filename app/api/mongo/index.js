@@ -18,8 +18,7 @@ const $_saveBlog = blog=>{
 	})
 }
 
-const $_saveCategory = category=>{
-	
+const $_saveCategory = category=>{	
 	return CategoryModel.findOneAndUpdate({
 		name: category.name
 	}, category).then(_category=>{
@@ -31,7 +30,17 @@ const $_saveCategory = category=>{
 	})
 }
 
+const $_getCategoryList = query=>{
+	return CategoryModel.find().exec().then(categoryList=>{
+		return {
+			status: 1,
+			data: categoryList
+		}
+	})
+}
+
 module.exports = {
 	$_saveBlog,
-	$_saveCategory
+	$_saveCategory,
+	$_getCategoryList
 }
