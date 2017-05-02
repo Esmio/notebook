@@ -3,10 +3,10 @@
  */
 
 let Router = require('./router')
-let {$_saveBlog, $_saveCategory} = require('./mongo')
+let {$_saveBlog, $_saveCategory, $_getCategoryList} = require('./mongo')
 // 获取分类列表
 Router.get('/categoryList.action', ctx=>{
-
+	return $_getCategoryList()
 })
 // 添加分类
 Router.post('/category.action', ctx=>{

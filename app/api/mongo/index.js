@@ -31,7 +31,7 @@ const $_saveCategory = category=>{
 }
 
 const $_getCategoryList = query=>{
-	return CategoryModel.find().exec().then(categoryList=>{
+	return CategoryModel.find(query).exec().then(categoryList=>{
 		return {
 			status: 1,
 			data: categoryList
