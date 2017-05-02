@@ -2,23 +2,28 @@
  * 创建schema
  */
 
-const mongoose = require('mongoose');
-const {Schema} = mongoose;
+const {Schema} = require('mongoose');
 
 // 创建博客数据储存
-exports.blogSchema = new Schema({
-  title:  String,
-  content:   String,
+const blogSchema = new Schema({
+  title: String,
+  content: String,
   rawContent: String,
-  category: String,
-  date: { type: String, default: ()=>{
-    return new Date().toLocaleString()
-  }}
+  category: categorySchema,
+  date: String
+},{
+	// _id: false,
+	strict: false
 });
 
 // 创建博客分类
-exports.categorySchema = new Schema({
-  category: String,
+const categorySchema = new Schema({
+  name: String,
+  id: String
 })
 
+module.exports = {
+	blogSchema,
+	categorySchema
+}
 
