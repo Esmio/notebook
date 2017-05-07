@@ -7,7 +7,7 @@ const fs = require('fs');
 const mime = require('mime');
 
  // expres框架 apo.use(static('public'))
-let getPath = pathname => path.resolve(process.cwd(), 'public', `.${pathname}`);
+let getPath = pathname => path.resolve(process.cwd(), 'public2', `.${pathname}`);
 
 let staticFunc = (ctx)=>{
 	let {pathname} = ctx.reqCtx;

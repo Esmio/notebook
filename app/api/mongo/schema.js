@@ -4,6 +4,13 @@
 
 const {Schema} = require('mongoose');
 
+// 创建博客分类
+const categorySchema = new Schema({
+  name: String,
+  id: String
+})
+
+
 // 创建博客数据储存
 const blogSchema = new Schema({
   title: String,
@@ -12,15 +19,10 @@ const blogSchema = new Schema({
   category: categorySchema,
   date: String
 },{
-	// _id: false,
+	_id: false, // id为false 告诉mongoose不要操作_id
 	strict: false
 });
 
-// 创建博客分类
-const categorySchema = new Schema({
-  name: String,
-  id: String
-})
 
 module.exports = {
 	blogSchema,

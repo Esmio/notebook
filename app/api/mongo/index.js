@@ -10,10 +10,6 @@ const CategoryModel = mongoose.model('Category', categorySchema);
 
 exports.$_saveBlog = blog=>{
 	let condition = {title: blog.title}
-	let {id} = blog
-	if(id) {
-		condition = {_id: transObjectId(id)}
-	}
 	blog.date = new Date().toLocaleString()
 	return BlogModel.findOneAndUpdate(condition, blog, {
 		upsert: true,

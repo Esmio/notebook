@@ -1,7 +1,7 @@
 /*
 * api server
 */
-let Router = require('./ajax')
+let router = require('./ajax')
 module.exports=(ctx)=>{
 	let { resCtx, reqCtx } = ctx;
 	let { pathname } = reqCtx;
@@ -11,7 +11,7 @@ module.exports=(ctx)=>{
 	// request ==> handler
 	return router.routes(ctx).then(val=>{
 		if(val){
-			rexCtx.statusCode=200
+			resCtx.statusCode=200
 			resCtx.headers = Object.assign(resCtx.headers, {
 				"Content-Type":"application/json"
 			})
