@@ -42,7 +42,7 @@ exports.$_getCategoryList = query=>{
 		}
 	})
 }
-
+// 获取博客详情
 exports.$_getBlogDetail = query=>{
 	let condition = {
 		_id : mongoose.Types.ObjectId(query.id)
