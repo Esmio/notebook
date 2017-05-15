@@ -14,8 +14,8 @@ const apiServer = require('./app/api');
 const urlParser = require('./app/url-parser');
 const viewServer = require('./app/view-server');
 
-server.use(cookieParser)
 server.use(urlParser)
+server.use(cookieParser)
 server.use(apiServer)
 server.use(staticServer)
 server.use(viewServer)

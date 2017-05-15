@@ -4,11 +4,10 @@
 const cookie_parser = require('cookie');
 const whiteNameList = ['/simon']
 module.exports = (ctx)=>{
-	let {pathname} = ctx.reqCtx;
+	let { pathname } = ctx.reqCtx;
 	let {cookie} = ctx.req.headers;
 	let {res, resCtx} = ctx;
-	let cookieObj = {}
-	cookie && (cookieObj = cookie_parser.parse(cookie || ''))
+	let cookieObj = cookie_parser.parse(cookie || '');
 	return Promise.resolve({
 		then: (resolve, reject)=>{
 			let cookieStr = time => `authd=hello;Max-Age=${time}`;
